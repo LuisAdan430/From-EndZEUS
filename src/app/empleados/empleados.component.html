@@ -1,0 +1,43 @@
+<br>
+<form action="">
+        
+        <div class="input-group mb-3">
+           
+            
+            
+            <!--
+                <input type="text" class="" placeholder="¡Comienza a buscar tu empleado!" (keyup)="searchTerm$.next($event.target.value)"
+                (click)="buscador()
+            -->
+            <input type="text" class="form-control" placeholder="Search">
+            <button class="btn btn-success" type="submit">Go</button>
+            
+          </div>
+
+    </form>
+    <table class="table">
+        <thead >
+            <tr class="table-dark">
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Fecha de Cumpleaños</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let empleado of empleados  | paginate: { itemsPerPage: 10,currentPage: page}" class="table-secondary">
+                    <td>{{ empleado.id }}</td>
+                    <td>{{ empleado.name }}</td>
+                    <td>{{ empleado.last_name }}</td>
+                    <td>{{ empleado.birthday }}</td>
+            </tr>
+            <div>
+                <ngb-pagination></ngb-pagination>
+            </div>
+            
+        </tbody>
+    </table>
+    <pagination-controls
+       (pageChange)="page= $event"
+       previousLabel="Anterior"
+       nextLabel="Siguiente"></pagination-controls>
